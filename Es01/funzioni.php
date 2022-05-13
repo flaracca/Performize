@@ -40,18 +40,3 @@ function Es01_qmLog($hook, $msg) : void{
     
 }
 
-if ( !function_exists('mostra_array')){
-    
-    function mostra_array($arr = array(), $txt = ''){
-
-        echo '<pre>';
-        
-        echo '<b>'. $txt .'</b><br>';
-        print_r($arr);
-        
-        echo '</pre>';
-        
-        echo '<hr>';
-    }
-
-}
