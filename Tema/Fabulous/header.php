@@ -15,9 +15,11 @@
                                     if ( has_nav_menu( 'primary' ) ) {
                                         wp_nav_menu(
                                             array( 
-                                                'theme_location' => 'primary', 
-                                                'container' => 'ul', 
-                                                'menu_class' => 'navbar-nav' 
+                                                'theme_location' => 'primary',
+                                                'depth'         => 2, 
+                                                'container'     => 'ul', 
+                                                'menu_class'    => 'navbar-nav',                                                
+                                                'walker'        => new WP_Bootstrap5_Navwalker(),
                                             )
                                         );
                                     }

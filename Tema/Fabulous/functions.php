@@ -52,12 +52,12 @@ function fabt_setup() {
     
 
 }
-endif; // myfirsttheme_setup
+endif; // fabt_setup
 add_action( 'after_setup_theme', 'fabt_setup' );
 
 
 /*
-** Aggiungi assets di Bootstrap 5
+** Aggiunta assets di Bootstrap 5
 */
 
 add_action( 'wp_enqueue_scripts', 'enqueue_fabt_bootstrap' );
@@ -68,13 +68,21 @@ function enqueue_fabt_bootstrap() {
 
 };
 
+/**
+ * Register Custom Navigation Walker
+ */
+function fabt_register_navwalker(){
+	require_once get_template_directory() . '/classes/class-wp-bootstrap5-navwalker.php';
+}
+add_action( 'after_setup_theme', 'fabt_register_navwalker' );
+
 /*
 ** Funzioni per registrare ed accodare scripts e css
 */
 add_action( 'wp_enqueue_scripts', 'fabt_archive_register' );	
 function fabt_archive_register() {
 
-	wp_enqueue_style('fabt_archive_css_01', get_template_directory_uri() . "/assets/css/archive.css");
+	wp_register_style('fabt_archive_css_01', get_template_directory_uri() . "/assets/css/archive.css");
 		
 }
 
@@ -103,4 +111,30 @@ function fabt_sidebars(){
 
 }
 
+/*
+** Filters
+*/
+
+// aggiungi classe al tag <li> del menu
+function fabt_class_on_li($classes, $item, $args) {
+
+    if(isset($args->add_li_class)) {
+        $classes[] = $args->add_li_class;
+    }
+    
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'fabt_class_on_li', 1, 3);
+
+
+// aggiungi classe al tag <a> del menu
+function fabt_class_on_a($classes, $item, $args)
+{
+    if (isset($args->add_a_class)) {
+        $classes['class'] = $args->add_a_class;
+    }
+    return $classes;
+}
+
+add_filter('nav_menu_link_attributes', 'fabt_class_on_a', 1, 3);
 
