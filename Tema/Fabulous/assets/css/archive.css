@@ -1,0 +1,67 @@
+.widget_category_mansory {
+    margin-bottom: 1.5rem;
+}
+
+.widget_category_mansory .widget-title {
+    margin-bottom: 1.5rem;
+}
+
+.widget_category_mansory .card img {
+    margin: 0;
+}
+
+.widget_category_mansory .card.card-bg {
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.1);
+    /*border: 1px solid #eceff1;*/
+}
+
+@media screen and (max-width: 767px) {
+    .widget_category_mansory .card.card-bg {
+        margin-left: 0;
+    }
+}
+
+.widget_category_mansory .card .flag-icon {
+    margin: 0 25px;
+    float: left;
+}
+
+.widget_category_mansory .card .card-img-top+.flag-icon {
+    position: absolute;
+    top: 0;
+    border: solid 3px white;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.card .card-body .category-top {
+    font-size: .77778rem;
+    text-transform: uppercase;
+    color: #435a70;
+    margin-bottom: 16px
+}
+
+.card .card-body .category-top a.category {
+    color: #435a70
+}
+
+.card .card-body .category-top a.category:hover {
+    text-decoration: underline
+}
+
+.card .card-body .category-top .category {
+    font-weight: 700;
+    letter-spacing: .9px
+}
+
+.card .card-body .category-top .data:before {
+    content: '—';
+    display: inline-block;
+    margin: 0 8px
+}
