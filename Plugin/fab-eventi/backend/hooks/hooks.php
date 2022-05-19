@@ -20,7 +20,7 @@ function fabev_register_pubblicita_metabox() {
 		'id'               => 'fabev_pubblicita_localita',
 		'type'             => 'select',
 		'show_option_none' => 'Tutte',
-		'options'          => GetPostsArray('localita', true),
+		'options'          => GetPostsArray('localita'),
         'column' => array(
             'position' => 2,
             'name'     => 'Località',
@@ -79,7 +79,7 @@ function fabev_register_pubblicita_metabox() {
 		'id'               => 'fabev_pubblicita_localita',
 		'type'             => 'select',
 		'show_option_none' => 'Tutti',
-		'options'          => GetPostsArray('evento', true)
+		'options'          => GetPostsArray('evento')
 	) );
 
     $cmb->add_field( array(
@@ -88,7 +88,7 @@ function fabev_register_pubblicita_metabox() {
 		'id'               => 'fabev_pubblicita_evento_tipo',
 		'type'             => 'select',
 		'show_option_none' => 'Tutti',
-		'options'          => GetPostsArray('tipoevento', true),
+		'options'          => GetPostsArray('tipoevento'),
 	) );
 
 }
@@ -114,11 +114,14 @@ function fabev_register_evento_metabox() {
 		'id'               => 'fabev_evento_localita',
 		'type'             => 'select',
 		'show_option_none' => false,
-		'options'          => GetPostsArray('localita', false),
+		'options'          => GetPostsArray('localita'),
         'column' => array(
             'position' => 2,
             'name'     => 'Località',
         ),
+		'attributes' => array(
+			'data-validation' => 'required',
+		),
 	) );
 
     $cmb->add_field( array(
@@ -131,6 +134,9 @@ function fabev_register_evento_metabox() {
             'position' => 3,
             'name'     => 'Dal',
         ),
+		'attributes' => array(
+			'data-validation' => 'required',
+		),
 	) );
 
     $cmb->add_field( array(
@@ -143,6 +149,9 @@ function fabev_register_evento_metabox() {
             'position' => 4,
             'name'     => 'Al',
         ),
+		'attributes' => array(
+			'data-validation' => 'required',
+		),
 	) );
 
     $cmb->add_field( array(
@@ -198,6 +207,9 @@ function fabev_register_localita_metabox() {
             'position' => 2,
             'name'     => 'Provincia',
         ),
+		'attributes' => array(
+			'data-validation' => 'required',
+		),
 	) );
 
     $cmb->add_field( array(

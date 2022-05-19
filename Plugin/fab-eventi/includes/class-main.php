@@ -36,15 +36,6 @@ class FABEV{
 
     private function DefineConstants() : void {
 
-        // Ajax URL.
-        if ( ! defined( 'AJAX_URL' ) ) {
-            define( 'AJAX_URL', admin_url('admin-ajax.php') );
-        }
-
-        if ( ! defined( 'FABEV_KEY' ) ) {
-            define( 'FABEV_KEY', 'xOikl9!df0' );
-        }
-
         // Plugin Folder Path.
         if ( ! defined( 'FABEV_DIR' ) ) {
             define( 'FABEV_DIR', plugin_dir_path( dirname( __FILE__, 1) ) );
@@ -61,24 +52,17 @@ class FABEV{
             define( 'FABEV_SITEURL', site_url() );
         }
 
-        // Prefisso per le tabelle del plugin
-        if ( ! defined( 'FABEV_DBPREFIX' ) ) {
-            define( 'FABEV_DBPREFIX', 'FABEV_' );
-        }
-
-        // Prefisso WP
-        if ( ! defined( 'FABEV_WPPREFIX' ) ) {
-            global $wpdb;
-            define( 'FABEV_WPPREFIX', $wpdb->prefix );
-        }
-
-        // Full Prefix Plugin Tables
-        if ( ! defined( 'FABEV_PREFIX' ) ) {
-            define( 'FABEV_PREFIX', FABEV_WPPREFIX . FABEV_DBPREFIX );
-        }
 
         if ( ! defined( 'FABEV_PLUGIN_NAME' ) ) {
             define( 'FABEV_PLUGIN_NAME', plugin_basename(dirname( __FILE__, 1)) );
+        }
+
+        if ( ! defined( 'FABEV_API_ROOT' ) ) {
+            define( 'FABEV_API_ROOT', 'fabev/' );
+        }
+
+        if ( ! defined( 'FABEV_API_VERSION' ) ) {
+            define( 'FABEV_API_VERSION', 'v1' );
         }
     }
     
@@ -130,7 +114,7 @@ class FABEV{
         $args = array(
             'labels'             => $labels,
             'description'        => 'Tipo Evento custom post type.',
-            'public'             => true,
+            'public'             => false,
             'publicly_queryable' => true,
             'show_ui'            => true,
             'show_in_menu'       => true,
@@ -199,6 +183,7 @@ class FABEV{
 							'label'        => __( 'Categorie', 'fabeventi' ),
 							'rewrite'      => array( 'slug' => 'evento_category' ),
 							'hierarchical' => true,
+                            'show_in_rest'  => true, // Needed for tax to appear in Gutenberg editor.
 						) 
 					);
 
@@ -247,6 +232,7 @@ class FABEV{
 
         register_post_type( 'localita', $args );
 
+        /*
         register_taxonomy( 'localita_category', 
 						'localita', 
 						array(
@@ -255,7 +241,7 @@ class FABEV{
 							'hierarchical' => true,
 						) 
 					);
-
+        */
 
     }
 
@@ -307,6 +293,7 @@ class FABEV{
 							'label'        => __( 'Categorie', 'fabeventi' ),
 							'rewrite'      => array( 'slug' => 'pubblicita_category' ),
 							'hierarchical' => true,
+                            'show_in_rest'      => true, // Needed for tax to appear in Gutenberg editor.
 						) 
 					);
 

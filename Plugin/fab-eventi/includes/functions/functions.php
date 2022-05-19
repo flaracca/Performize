@@ -40,13 +40,12 @@ if (!function_exists('fn_qmLog')){
     }
 }
 
-function GetPostsArray($postType, $addEmpty = false) : array {
+function GetPostsArray($postType) : array {
     
     $arr = [];
 
     $args = array(
-        'post_type' => $postType,
-        'public' => true
+        'post_type' => $postType
     );
 
     $query = new WP_Query( $args );
@@ -56,6 +55,30 @@ function GetPostsArray($postType, $addEmpty = false) : array {
         $arr[$post->ID] = $post->post_title;
     }
     
+    asort($arr);
+    return $arr;
+}
+
+function GetCategoriesArray($postType) : array {
+    
+    $arr = [];
+
+    $args = array (
+            'taxonomy' => $postType . '_category',
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'hide_empty' => false
+    );
+    
+    $query = get_terms($args);
+    
+
+    foreach( $query as $term ) { 
+        
+        $arr[$term->term_id] = $term->name;
+    }
+
+    asort($arr);
     
     return $arr;
 }

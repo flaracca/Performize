@@ -6,27 +6,37 @@
     */
     $cartella = '/lib';
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/cmb2.php' );
+
+    /*
+    ** API
+    */
+    $cartella = '/api';    
+    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/api-functions.php' );
+    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/rest-api-action.php' );
+
     /*
     ** CLASSES
     */
-
-    $cartella = '/includes';
-    /* CORE START */
+    $cartella = '/includes';    
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/class-main.php' );
-    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/class-constants.php' );
-	require_once( plugin_dir_path( __FILE__ ) . $cartella . '/class-hooks.php' );	
-    /* CORE END */
-
 
     /*
-    ** HOOKS
+    ** SHORTCODES
     */
-    /* CORE START */
+    $cartella = '/frontend/shortcodes';
+    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/sc-evento-ricerca.php' );
+
+    /* HOOKS */
     $cartella = '/backend/hooks';
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/hooks.php' );
+    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/menu.php' );
+
     $cartella = '/frontend/hooks';
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/hooks.php' );
-
+    
+    /* ACTIONS */
+    $cartella = '/backend/actions';
+    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/action-cmb2.php' );
     
 
     /*

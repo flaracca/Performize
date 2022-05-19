@@ -44,7 +44,7 @@ function FABEV_load_textdomain() {
 require_once dirname( __FILE__ ) . '/autoload.php';
 
 if ( ! defined( 'FABEV_VERSION' ) ) {
-            define( 'FABEV_VERSION', '1.0.24' );
+            define( 'FABEV_VERSION', '1.0.0' );
         }
 
 
