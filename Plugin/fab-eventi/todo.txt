@@ -1,0 +1,17 @@
+hook.php
+* hk_FABEV_checkTemplate(): foreach not looping.
+* delete appuntamenti from sede_id. Implements fn in class-sede.php/DeleteById()
+[*] in gestione-orari: COPIA da un giorno all'altro
+[] delete backend/get_resources.php
+[*] add-rewrite-rule
+[*] utenti piattaforma: ruolo [utente_base, responsabile_sede, cliente]
+[*] aggiornamento password database
+[*] logo personalizzato
+[*] orario calendario
+[*] giorni lavorativi
+[] social login
+[] invio email
+[] sms
+[*] background events
+[*] ferie
+[] drag events

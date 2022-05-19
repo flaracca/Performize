@@ -1,0 +1,146 @@
+1.0.30 2022-05-19
+	[x] Aggiunto 2° conto in Aggiungi Movimento.
+	
+1.0.29 2022-05-10
+	[x] Aggiunto Saldo YTD in Contabilità Report per Mastrino Fornitore e Mastringo Conto.
+
+1.0.28 2022-04-15
+	[x] Corretto gestione degli articoli ordinati non prenotati in reportCliente in modo che non interferisse con il filtro.
+	
+1.0.27 2022-03-15
+	In Contabilità-documenti
+	[x] Aggiunto Campo Spese in Inserimento Documento in Contabilità.
+	[x] Aggiunto Nota di Credito.
+	[x] Aggiunto Controllo Partita IVA in inserimento
+
+1.0.26 2022-03-15
+	[x] Saldo Precedente in alto senza sfondo colorato in PDF Report Conto Bancario
+	[x] Aumentare larghezza colonne importi in PDF Report Conto Bancario
+	[x] Corretto html entities da ogni documento.
+
+1.0.25 2022-02-18
+	[x] Report Contabilità (Prima Nota, Mastrino Fornitore, Mastrino Conto) in pdf ed excel.
+	
+1.0.24 2022-02-18
+	In Contabilità-documenti
+	[x] Ridurre tipo doc, Pagato con, Conto Bancario
+	[x] Togliere Scadenza
+	[x] Aggiungere Abbinato a filtro
+	[x] Cambiare Montante in Totale in inserimento documenti
+	[x] Ridurre padding e impostare a 20 righe
+	[x] Aggiunto Movimento: da un conto bancario ad un altro (Es. Pagamento della Carta di Credito dal conto bancario)
+.27
+1.0.23 2022-02-08
+  	[x] In Clienti/Fornitori/Traspo sostituire in datatable piva con note per ultimo
+  	[x] In prodotti datatable inserire colonna per presenza foto
+  	
+1.0.22  2022-01-14
+    [x] Contabilità: aggiunto più aliquote IVA allo stesso documento
+    [x] Contabilità: aggiunto Addebito/Accredito in Tipo Doc
+    [x] Contabilità: aggiunto doc Acquisto/Vendita
+    [x] Contabilità: aggiunto note
+    [x] Contabilità: aggiunto abbuono
+
+1.0.21
+	[x] Aggiungere conti bancari
+	[x] Aggiungere causale
+	[x] Aggiungere fattura emessa/ricevuta
+	[x] aggiungere aliquote/esenzioni IVA
+	[x] aggiungere abbinamento a conto
+	Corretto ordine alfabetico delle voci ordine in ORDINI-CLIENTI e DDT-CLIENTI (quando si richiama l'ordine)
+
+1.0.20
+	Aggiunto flag stagione predefinita.
+	Correzione in REPORT CLIENTE e LIBRONE: aggiunti anche articoli non in ordine.
+	
+1.0.19
+	[x] Aggiunto Contabilità
+
+1.0.18
+	[x] Viualizzazione attività su container
+	[x] Visualizzazione attività su nominativo
+	[x] Correzione calcolo qtaDaConsegnare nei due reports (HTML, PDF, Excel). Se inferiore a 0 = 0. Marcato con dei colori.
+	
+1.0.17 
+	[x] Azioni con Colore ed assegnato ad User
+
+1.0.16 2021.11.25
+	[x] Aggiunta categoria nominativi.
+	[x] Containers. Aggiunto Venduto e Nome
+	[x] In REPORT-LIBRONE reso possibile filtrare per più gruppi.
+	[x] Foto multiple per i prodotti.
+	[x] Corretto bug che stampava solo la prima pagina dei PDF.
+
+1.0.15
+	Aggiunto campo note in DDT.
+	Riordinato in ordine alfabetico le voci sia in Ordini sia in Ddt.
+	
+1.0.14
+ 	[x] Aggiungere in Report Cliente e Report Librone il parametro fornitore
+ 	[x] Sistemare notifica qta->casse in ordine e ddt
+ 	[x] In modifica prodotto sistemare quando manca la provenienza.
+ 	[x] Impostare vincolo di eliminazione prodotto: non deve essere possibile se il prodotto è presente nelle tabelle stock, ordiniVoci o ddtVoci.
+ 	
+1.0.13 2021.10.04
+	[x] Corretto filtro in DDT ed Ordine Cliente
+	[x] Aggiungere importo ddt in DDT datatable (bacci)
+	[x] Aggiungere fornitori prodotti in DDT datatable
+	[x] Aggiungere stato ordine in DDT per cliente
+	[x] Aggiungere scelta gruppo multiplo in report cliente
+	[x] Modificare ordine colonne esportazione excel in Report Cliente: Descrizione, 3 x qta, cliente, sku
+
+1.0.12 2021.09.27
+	Modificato campo prezzo sia in ddtVoci sia in ordiniVoci in 3 decimali nel DB.
+	Modificato nr del ddt nel nome del pdf generato (da id a numdoc-anno);
+	
+1.0.11 2021.09.22
+	Aggiunta esportazione excel in Report Librone e Cliente.
+	Aggiunto filtri famiglia/varietà/gruppo/colore/provenienza in Report Librone e Cliente.
+	Reso Report Cliente multi-cliente.
+	
+1.0.10 2021.09.20
+	Aggiunto aggiornamento descrizione e sku in stock e ddtvoci a seguito di aggiornamento in Articoli.
+	
+1.0.9 2021.09.17
+	Aggiunto valori ORDINATO/SPEDITO in DDT.
+	Aggiunto Gruppo nel filtro di REPORT LIBRONE.
+	Aggiunta esportazione excel in Stock.
+	
+1.0.8 2021.09.10
+	Aggiunto in NUOVO ARTICOLO la possibilità di inserirlo anche in Stock scegliendo la stagione e la quantità.
+	Aggiunto calcolo bulbi in ORDINI-CLIENTI e DDT (e colorati);
+	
+1.0.7 2021.08.12
+	Corretto grafica dei seguenti PDF:
+	- DDT:
+		- aggiunto 'documento esclusivo...' sotto l'intestazione Italflora.
+		- inserito lo skuFornitore nella colonna SKU
+		- visualizzazione a 3 decimali con la virgola per il prezzo
+	- LIBRONE
+		- Esteso bordo più spesso nelle ultime 3 celle relative allo stock
+		- Ordinato alfabeticamente le varietà
+		- Ordinato alfabeticamente le aziende
+	- REPORT CLIENTE
+		- inserito lo skuFornitore nella colonna SKU
+		- modificato Venduto in Spedito
+		- modificato Saldo in Da Spedire
+		- eliminata riga finale nel riepilogo che si estendeva fuori dalla tabella
+
+	Aggiunta icona 'i' in DDT per mostrare la qta prenotata/spedita/da spedire
+
+1.0.6 2021.08.06
+	Aggiunto il campo note in ORDINI-CLIENTI
+	Aggiunto l'avviso in caso il calcolo Casse-da-qtà non è un numero intero (in DDT).
+	Ignorato l'inserimento di articoli con valore NaN o 0 in DDT
+	Aggiunto troncamento a 40 caratteri della ragione sociale in LIBRONE
+	
+1.0.5 2021.08.05
+	In DDT ed ORDINI-CLIENTI:
+	- spostato il prezzo cliente dopo le casse.
+	- reso possibile inserire la quantità indipendentemente dalle casse.
+	- aggiunto possibilità di scegliere se calcolare la qta dalle casse o viceversa
+	- compattato elenco
+
+	
+1.0.0 2021.07.01
+    First Deployment
