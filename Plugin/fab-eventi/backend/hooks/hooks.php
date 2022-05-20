@@ -227,7 +227,7 @@ function fabev_register_localita_metabox() {
     ) );
 }
 
-function searchfilter($query) {
+function fabev_searchfilter($query) {
     
 	if ($query->is_search && !is_admin() ) {
         
@@ -287,7 +287,7 @@ function searchfilter($query) {
 	
 	return $query;
 }
-add_filter('pre_get_posts','searchfilter');
+add_filter('pre_get_posts','fabev_searchfilter');
 
 /*
 ** Sostituisco il search form
