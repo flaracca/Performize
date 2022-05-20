@@ -40,6 +40,19 @@ if (!function_exists('fn_qmLog')){
     }
 }
 
+function GetTargetsArray() : array {
+    
+    $arr = [];
+
+    $arr[] = 'Famiglia';
+    $arr[] = 'Giovani';
+    $arr[] = 'Sportivi';
+    $arr[] = 'Coppie';
+    
+    asort($arr);
+    return $arr;
+}
+
 function GetPostsArray($postType) : array {
     
     $arr = [];

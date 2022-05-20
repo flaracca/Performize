@@ -179,13 +179,12 @@ function fabev_register_evento_metabox() {
 		'id'               => 'fabev_evento_target',
 		'type'             => 'select',
 		'show_option_none' => 'Tutti',
-		'options'          => array(
-			'famiglia' => esc_html__( 'Famiglia', 'fabeventi' ),
-			'giovani'   => esc_html__( 'Giovani', 'fabeventi' ),
-			'sportivi'     => esc_html__( 'Sportivi', 'fabeventi' ),
-            'coppie'     => esc_html__( 'Coppie', 'fabeventi' ),
-		),
+		'options'          => GetPostsArray('tipoevento'),
 		'object_types' => array( 'evento' ),
+		'column' => array(
+            'position' => 5,
+            'name'     => 'Target',
+        ),
 	) );
 }
 
@@ -395,3 +394,70 @@ function fabev_single_template($template){
 
 add_filter('template_include','fabev_single_template');
 
+
+/**
+ * Elenco a tendina dei target
+ */
+if (is_admin()){
+	function fabev_filter_post_type_by_target() {
+		global $typenow;
+		$post_type = 'evento'; // change to your post type
+		$customField = 'tipoevento';
+
+		if ($typenow == $post_type) {
+
+			$arr = GetPostsArray($customField);
+			$current_v = isset($_GET['admin_evento_target'])? $_GET['admin_evento_target'] : '';
+
+			foreach($arr as $id=>$nome){
+
+				$selected = ($current_v == $id) ? 'selected="selected"' : '';
+
+				$optionList .= '<option value="'. $id .'" '. $selected .'>'. $nome .'</option>';
+			}
+
+			$dropDown = '
+				<div class="alignleft actions">
+					<select name="admin_evento_target" id="admin_evento_target" class="postform">
+					<option value="">Tutti i target</option>
+					'. $optionList .'
+					</select>
+				</div>';
+
+			echo $dropDown;
+		}
+		
+
+
+	}
+	add_action('restrict_manage_posts', 'fabev_filter_post_type_by_target');
+
+
+	/*
+	** Modifico la query di selezione
+	*/
+	function fabev_alter_query_post_list($query){
+		global $pagenow;
+		$post_type = 'evento'; // change to your post type
+		$q_vars    = &$query->query_vars;
+
+		if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($_GET['admin_evento_target']) && !empty($_GET['admin_evento_target'])) {
+			
+			$arrMetaQuery = array(
+				'key' => 'fabev_evento_target',
+				'value' => $_GET['admin_evento_target'],
+				'compare' => '='
+			);
+			
+			$query->set('meta_query', array(
+						array(
+							'relation' => 'AND', // Optional, defaults to "AND"
+							$arrMetaQuery
+						)
+						
+					));
+		}
+		
+	}
+	add_filter('parse_query', 'fabev_alter_query_post_list');
+}
