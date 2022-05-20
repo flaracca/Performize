@@ -23,10 +23,15 @@
 
                         $indirizzo = ($postmetas['fabev_evento_indirizzo'][0]) ? $postmetas['fabev_evento_indirizzo'][0] : 'nessuno';
 
-                        $tipo = get_the_terms(get_the_ID(), 'evento_category');			
+                        $tipoMain = get_the_terms(get_the_ID(), 'evento_category');			
                         
-                        $localita = get_the_title($postmetas['fabev_evento_localita'][0]);
-                        $localitaLink = '<a href="'. get_permalink($postmetas['fabev_evento_localita'][0]) .'">'. $localita .'</a>';
+                        $localitaMain = get_the_title($postmetas['fabev_evento_localita'][0]);
+                        $localitaMainLink = '<a href="'. get_permalink($postmetas['fabev_evento_localita'][0]) .'">'. $localitaMain .'</a>';
+
+                        $eventoTarget = $postmetas['fabev_evento_target'][0];
+
+                        $eventoId = get_the_ID();
+
                         ?>
                         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <header>
@@ -69,7 +74,7 @@
 
                                             <tr>
                                                 <th>Località</th>
-                                                <td><?php echo $localitaLink; ?></td>
+                                                <td><?php echo $localitaMainLink; ?></td>
                                             </tr>
 
                                             <tr>
@@ -79,7 +84,7 @@
 
                                             <tr>
                                                 <th>Tipo</th>
-                                                <td><?php echo $tipo[0]->name; ?></td>
+                                                <td><?php echo $tipoMain[0]->name; ?></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -96,7 +101,7 @@
                                                     array(
                                                         'taxonomy'  => 'evento_category',
                                                         'field'     => 'slug',
-                                                        'terms'     => $tipo[0]->slug
+                                                        'terms'     => $tipoMain[0]->slug
                                                     )
                                                 )
                                             );
@@ -144,6 +149,87 @@
                                                 <h3>Eventi Futuri</h3><?php echo $eventiFuturi; ?>
 
                                                 <h3>Eventi Passati</h3><?php echo $eventiPassati; ?>
+                                            <?php endif;
+
+                                            // Restore the $post global back to the current post in the main query.
+                                            wp_reset_postdata();
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="pubblicita">
+                                    <div class="row">
+                                        <?php
+                                            
+                                            $args = array(
+                                                'post_type'         => 'pubblicita',
+                                                'post_status'       => 'publish'
+                                            );
+
+                                            $query = new WP_Query($args);
+
+                                            if ($query->have_posts()):
+
+                                                $oggi = date('Y-m-d');
+
+                                                
+                                                while ( $query->have_posts() ) :
+                                                    // This modifies the $post global.
+                                                    $query->the_post();
+                                                    $postmetasPubblicita = get_post_meta(get_the_ID());
+
+                                                    $mostraPubblicita = true;
+
+                                                    // verifico il range di date
+                                                    if ($postmetasPubblicita['fabev_pubblicita_dal']){
+
+                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_dal'][0] <= $oggi ) ? true : false;
+                                                        
+                                                    }
+
+                                                    if ($postmetasPubblicita['fabev_pubblicita_al']){
+
+                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_al'][0] >= $oggi ) ? true : false;
+
+                                                    }
+
+                                                    // verifico il tipo di evento
+                                                    if ($postmetasPubblicita['fabev_pubblicita_evento_specifico']){
+
+                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_evento_specifico'][0] == $eventoId ) ? true : false;
+
+                                                    }
+
+                                                    // verifico il target evento
+                                                    if ($postmetasPubblicita['fabev_pubblicita_evento_target']){
+
+                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_evento_target'][0] == $eventoTarget ) ? true : false;
+                                                        
+                                                    }
+                                                    
+                                                    if ($mostraPubblicita){
+
+                                                        ?>
+                                                            <div class="col-md-3 card">
+                                                                <?php if (has_post_thumbnail()) : ?>
+                                                                    <?php the_post_thumbnail('thumbnail', array('class' => 'card-img-top')); ?>
+                                                                <?php endif; ?>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title"><?php the_title(); ?></h5>
+                                                                    <p class="card-text"><?php the_content(); ?></p>
+                                                                    <?php if ($postmetasPubblicita['fabev_pubblicita_link']) : ?>
+                                                                        <a href="<?php echo $postmetasPubblicita['fabev_pubblicita_link'][0]; ?>" class="btn btn-primary">Scopri di più</a>
+                                                                    <?php endif; ?>
+                                                                </div>
+                                                            </div>
+                                                        <?php
+                                                        
+                                                    }
+                                                    ?> 
+                                                    
+                                                <?php endwhile; ?>
+                                                
+                                                
                                             <?php endif;
 
                                             // Restore the $post global back to the current post in the main query.

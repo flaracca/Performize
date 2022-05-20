@@ -32,7 +32,7 @@ function fabev_register_pubblicita_metabox() {
 		'desc' => esc_html__( 'Data inizio pubblicità.  Può essere lasciato vuoto.', 'fabeventi' ),
 		'id'   => 'fabev_pubblicita_dal',
 		'type' => 'text_date',
-		'date_format' => 'd-m-Y',
+		'date_format' => 'Y-m-d',
         'column' => array(
             'position' => 3,
             'name'     => 'Dal',
@@ -44,7 +44,7 @@ function fabev_register_pubblicita_metabox() {
 		'desc' => esc_html__( 'Data fine pubblicità. Può essere lasciato vuoto.', 'fabeventi' ),
 		'id'   => 'fabev_pubblicita_al',
 		'type' => 'text_date',
-		'date_format' => 'd-m-Y',
+		'date_format' => 'Y-m-d',
         'column' => array(
             'position' => 4,
             'name'     => 'Al',
@@ -76,16 +76,16 @@ function fabev_register_pubblicita_metabox() {
     $cmb->add_field( array(
 		'name'             => esc_html__( 'Evento', 'fabeventi' ),
 		'desc'             => esc_html__( 'Seleziona un evento specifico.', 'fabeventi' ),
-		'id'               => 'fabev_pubblicita_localita',
+		'id'               => 'fabev_pubblicita_evento_specifico',
 		'type'             => 'select',
 		'show_option_none' => 'Tutti',
 		'options'          => GetPostsArray('evento')
 	) );
 
     $cmb->add_field( array(
-		'name'             => esc_html__( 'Tipo Evento', 'fabeventi' ),
-		'desc'             => esc_html__( 'Tipo Evento. Se selezionato comparirà solo negli eventi di questo tipo.', 'fabeventi' ),
-		'id'               => 'fabev_pubblicita_evento_tipo',
+		'name'             => esc_html__( 'Target Evento', 'fabeventi' ),
+		'desc'             => esc_html__( 'Target Evento. Se selezionato comparirà solo negli eventi di questo Target.', 'fabeventi' ),
+		'id'               => 'fabev_pubblicita_evento_target',
 		'type'             => 'select',
 		'show_option_none' => 'Tutti',
 		'options'          => GetPostsArray('tipoevento'),
