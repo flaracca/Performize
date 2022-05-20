@@ -13,7 +13,7 @@ class FABEV{
         $this->DefineConstants();
         $this->Installation();
         $this->Evento_post_type();
-        $this->TipoEvento_post_type();
+        $this->TargetEvento_post_type();
         $this->Localita_post_type();
         $this->Pubblicita_post_type();
 
@@ -89,31 +89,31 @@ class FABEV{
         }
     }
 
-    private function TipoEvento_post_type(){
+    private function TargetEvento_post_type(){
         
         $labels = array(
-            'name'                  => _x( 'Tipo Evento', 'Post type general name', 'fabeventi' ),
-            'singular_name'         => _x( 'Tipo Evento', 'Post type singular name', 'fabeventi' ),
-            'menu_name'             => _x( 'Tipo Evento', 'Admin Menu text', 'fabeventi' ),
+            'name'                  => _x( 'Target Evento', 'Post type general name', 'fabeventi' ),
+            'singular_name'         => _x( 'Target Evento', 'Post type singular name', 'fabeventi' ),
+            'menu_name'             => _x( 'Target Evento', 'Admin Menu text', 'fabeventi' ),
             'name_admin_bar'        => _x( 'name_admin_bar', 'Add New on Toolbar', 'fabeventi' ),
             'add_new'               => __( 'Aggiungi nuovo', 'fabeventi' ),
-            'add_new_item'          => __( 'Aggiungi nuovo Tipo Evento', 'fabeventi' ),
-            'new_item'              => __( 'Nuovo Tipo Evento', 'fabeventi' ),
-            'edit_item'             => __( 'Modifica Tipo Evento', 'fabeventi' ),
-            'view_item'             => __( 'Vedi Tipo Evento', 'fabeventi' ),
+            'add_new_item'          => __( 'Aggiungi nuovo Target Evento', 'fabeventi' ),
+            'new_item'              => __( 'Nuovo Target Evento', 'fabeventi' ),
+            'edit_item'             => __( 'Modifica Target Evento', 'fabeventi' ),
+            'view_item'             => __( 'Vedi TiTargetpo Evento', 'fabeventi' ),
             'all_items'             => __( 'Tutti', 'fabeventi' ),
-            'search_items'          => __( 'Cerca Tipo Evento', 'fabeventi' ),
-            'not_found'             => __( 'Nessuna Tipo Evento trovata.', 'fabeventi' ),
-            'not_found_in_trash'    => __( 'Nessuna Tipo Evento trovata nel cestino.', 'fabeventi' ),
-            'archives'              => _x( 'Archivi di Tipo Evento', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'fabeventi' ),
-            'insert_into_item'      => _x( 'Inserisci in Tipo Evento', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'fabeventi' ),
-            'filter_items_list'     => _x( 'Filtra Tipo Evento', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'fabeventi' ),
-            'items_list_navigation' => _x( 'Navigazione Elenco Tipo Evento', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'fabeventi' ),
-            'items_list'            => _x( 'Elenco Tipo Evento', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'fabeventi' ),
+            'search_items'          => __( 'Cerca Target Evento', 'fabeventi' ),
+            'not_found'             => __( 'Nessun Target Evento trovata.', 'fabeventi' ),
+            'not_found_in_trash'    => __( 'Nessun Target Evento trovata nel cestino.', 'fabeventi' ),
+            'archives'              => _x( 'Archivi di Target Evento', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'fabeventi' ),
+            'insert_into_item'      => _x( 'Inserisci in Target Evento', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'fabeventi' ),
+            'filter_items_list'     => _x( 'Filtra Target Evento', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'fabeventi' ),
+            'items_list_navigation' => _x( 'Navigazione Elenco TipTargeto Evento', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'fabeventi' ),
+            'items_list'            => _x( 'Elenco Target Evento', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'fabeventi' ),
         );     
         $args = array(
             'labels'             => $labels,
-            'description'        => 'Tipo Evento custom post type.',
+            'description'        => 'Target Evento custom post type.',
             'public'             => false,
             'publicly_queryable' => true,
             'show_ui'            => true,
