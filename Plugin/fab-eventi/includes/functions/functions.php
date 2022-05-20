@@ -45,7 +45,8 @@ function GetPostsArray($postType) : array {
     $arr = [];
 
     $args = array(
-        'post_type' => $postType
+        'post_type' => $postType,
+        'post_status' => 'publish'
     );
 
     $query = new WP_Query( $args );
@@ -93,6 +94,20 @@ function GetProvince() : array {
     $arr['SP'] = 'Spezia';
 
     return $arr;
+}
+
+/*
+** Trasforma la data da 2022-02-01 in 01/02/2022
+*/
+function CambiaData($data, $originalDelimiter = '-', $returnDelimiter = '/' ) : string {
+
+    $arr = explode($originalDelimiter, $data);
+
+    $arrNew[0] = $arr[2];
+    $arrNew[1] = $arr[1];
+    $arrNew[2] = $arr[0];
+
+    return implode($returnDelimiter, $arrNew);
 }
 
 ?>

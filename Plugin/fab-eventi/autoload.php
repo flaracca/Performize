@@ -7,25 +7,14 @@
     $cartella = '/lib';
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/cmb2.php' );
 
-    /*
-    ** API
-    */
-    $cartella = '/api';    
-    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/api-functions.php' );
-    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/rest-api-action.php' );
-
+    
     /*
     ** CLASSES
     */
     $cartella = '/includes';    
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/class-main.php' );
 
-    /*
-    ** SHORTCODES
-    */
-    $cartella = '/frontend/shortcodes';
-    require_once( plugin_dir_path( __FILE__ ) . $cartella . '/sc-evento-ricerca.php' );
-
+    
     /* HOOKS */
     $cartella = '/backend/hooks';
     require_once( plugin_dir_path( __FILE__ ) . $cartella . '/hooks.php' );

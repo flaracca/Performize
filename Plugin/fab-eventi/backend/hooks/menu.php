@@ -9,7 +9,7 @@ function FABEV_admin_pages(){
 
     
     //$pageHook[] = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, 'INSIDEDOCS_admin_page', plugin_dir_url( dirname( __FILE__, 2) ) . 'images/logo_menu.png' , 110 );
-    $pageHook[] = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, 'FABEV_admin_page', plugin_dir_url( dirname( __FILE__, 2) ) . 'images/tulip_24x24.png', 110 );
+    $pageHook[] = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, 'FABEV_admin_page', plugin_dir_url( dirname( __FILE__, 2) ) . 'images/happy-face_24x24.png', 110 );
     
 	//$pageHook[] = add_submenu_page($menu_slug, __('NomePagina', 'ITLFdomain'), __('NomePagina', 'ITLFdomain'), $capability, 'hk-ITLF-admin-subpage' ,'ITLF_admin_subpage');
 	
