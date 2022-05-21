@@ -15,9 +15,9 @@
                         the_post(); 
                         $postmetas = get_post_meta(get_the_ID());
 			
-                        $dataDal = CambiaData($postmetas['fabev_evento_dal'][0]);
-                        $dataAl = CambiaData($postmetas['fabev_evento_al'][0]);
-                        $dateRange = $dataDal .' - '. $dataAl;
+                        $dataDal    = CambiaData($postmetas['fabev_evento_dal'][0]);
+                        $dataAl     = CambiaData($postmetas['fabev_evento_al'][0]);
+                        $dateRange  = $dataDal .' - '. $dataAl;
 
                         $contatti = ($postmetas['fabev_evento_contatti'][0]) ? $postmetas['fabev_evento_contatti'][0] : 'nessuno';
 
@@ -25,8 +25,9 @@
 
                         $tipoMain = get_the_terms(get_the_ID(), 'evento_category');			
                         
-                        $localitaMain = get_the_title($postmetas['fabev_evento_localita'][0]);
-                        $localitaMainLink = '<a href="'. get_permalink($postmetas['fabev_evento_localita'][0]) .'">'. $localitaMain .'</a>';
+                        $localitaMain       = get_the_title($postmetas['fabev_evento_localita'][0]);
+                        $localitaMainLink   = '<a href="'. get_permalink($postmetas['fabev_evento_localita'][0]) .'">'. $localitaMain .'</a>';
+                        $localitaProvincia  = get_post_meta($postmetas['fabev_evento_localita'][0], 'fabev_localita_provincia', true);
 
                         $eventoTarget = $postmetas['fabev_evento_target'][0];
 
@@ -74,7 +75,7 @@
 
                                             <tr>
                                                 <th>Località</th>
-                                                <td><?php echo $localitaMainLink; ?></td>
+                                                <td><?php echo $localitaMainLink; ?> - <?php echo $localitaProvincia; ?></td>
                                             </tr>
 
                                             <tr>
@@ -178,36 +179,43 @@
                                                     $query->the_post();
                                                     $postmetasPubblicita = get_post_meta(get_the_ID());
 
-                                                    $mostraPubblicita = true;
+                                                    $mostraPubblicita = [];
 
                                                     // verifico il range di date
                                                     if ($postmetasPubblicita['fabev_pubblicita_dal']){
 
-                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_dal'][0] <= $oggi ) ? true : false;
+                                                        $mostraPubblicita['fabev_pubblicita_dal'] = ($postmetasPubblicita['fabev_pubblicita_dal'][0] <= $oggi ) ? true : false;
                                                         
                                                     }
 
                                                     if ($postmetasPubblicita['fabev_pubblicita_al']){
 
-                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_al'][0] >= $oggi ) ? true : false;
+                                                        $mostraPubblicita['fabev_pubblicita_al'] = ($postmetasPubblicita['fabev_pubblicita_al'][0] >= $oggi ) ? true : false;
 
                                                     }
 
                                                     // verifico il tipo di evento
                                                     if ($postmetasPubblicita['fabev_pubblicita_evento_specifico']){
 
-                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_evento_specifico'][0] == $eventoId ) ? true : false;
+                                                        $mostraPubblicita['fabev_pubblicita_evento_specifico'] = ($postmetasPubblicita['fabev_pubblicita_evento_specifico'][0] == $eventoId ) ? true : false;
 
                                                     }
 
                                                     // verifico il target evento
                                                     if ($postmetasPubblicita['fabev_pubblicita_evento_target']){
 
-                                                        $mostraPubblicita = ($postmetasPubblicita['fabev_pubblicita_evento_target'][0] == $eventoTarget ) ? true : false;
+                                                        $mostraPubblicita['fabev_pubblicita_evento_target'] = ($postmetasPubblicita['fabev_pubblicita_evento_target'][0] == $eventoTarget ) ? true : false;
                                                         
                                                     }
                                                     
-                                                    if ($mostraPubblicita){
+                                                    // verifico la provincia
+                                                    if ($postmetasPubblicita['fabev_pubblicita_provincia']){
+                                                        
+                                                        $mostraPubblicita['fabev_pubblicita_provincia'] = ($postmetasPubblicita['fabev_pubblicita_provincia'][0] == $localitaProvincia ) ? true : false;
+                                                    }
+                                                    
+                                                    // se non ho nessuna condizione false mostro la pubblicità
+                                                    if (!in_array(false, $mostraPubblicita)){
 
                                                         ?>
                                                             <div class="col-md-3 card">
